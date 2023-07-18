@@ -11,10 +11,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('route_product_add') }}">Add</a>
+            <a class="nav-link" href="{{ route('route_category_add') }}">Add</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/product') }}">List</a>
+            <a class="nav-link" href="{{ url('/category') }}">List</a>
           </li>
           
         </ul>
@@ -22,37 +22,21 @@
     </div>
   </nav>
 
-
 <table class="table table-danger table-inverse table-responsive" border="3">
-    
     <thead class="thead-inverse">
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Category_id</th>
-            <th>Desc</th>
-            <th>Price</th>
-            <th>Size</th>
-            <th>Color</th>
-            <th>Date_add</th>
-            <th>Image</th>
             <th>Status</th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
-            @foreach($products as $pr)
+            @foreach($categories as $c)
             <tr>
-                <td>{{ $pr->id }}</td>
-                <td>{{ $pr->name }}</td>
-                <td>{{ $pr->category_id }}</td>
-                <td>{{ $pr->desc }}</td>
-                <td>{{ $pr->price }}</td>
-                <td>{{ $pr->size }}</td>
-                <td>{{ $pr->color }}</td>
-                <td>{{ $pr->date_add }}</td>
-                <td>{{ $pr->image }}</td>
-                <td>{{ $pr->status }}</td>
+                <td>{{ $c->id }}</td>
+                <td>{{ $c->name }}</td>
+                
+                <td>{{ $c->status }}</td>
                 
             </tr>
             @endforeach

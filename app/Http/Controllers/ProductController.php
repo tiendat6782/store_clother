@@ -8,6 +8,7 @@ use  Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 
+
 class ProductController extends Controller
 {
     //
@@ -50,5 +51,18 @@ public function addProduct(ProductRequest $request)
             // dd(233);
         }
         return view('products.add');
+    }
+    public function editProduct(ProductRequest $request, $id){
+        $product = Product::find($id);
+        if($request->isMethod("POST")){
+            $result = Product::where('id',$id)->update($request->except('_token'));
+            if($result){
+                Session::flash('success', 'Cập nhật thành công sản phẩm');
+                return redirect()->route('route_product_edit',['id'=>$id]);
+            }else{
+                Session::flash('error', 'Cập nhật thất bại sản phẩm');
+            }
+        }
+        return view('products.edit', compact('product'));
     }
 }

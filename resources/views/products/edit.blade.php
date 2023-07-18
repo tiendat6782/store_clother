@@ -4,47 +4,47 @@
 
     
 
-        <form action="{{ route('route_product_add') }}"  method="POST" enctype="multipart/form-data">
+        <form action="{{ route('route_product_edit',['id'=>$product->id]) }}"  method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Nhập tên của sản phẩm">
+                <input type="text" class="form-control" value="{{ $product->name }}" name="name" placeholder="Nhập tên của sản phẩm">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Category_ID</label>
-                <input type="number" class="form-control" name="category_id">
+                <input type="number" class="form-control" value="{{ $product->category_id }}" name="category_id">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Description</label>
-                <input type="text" class="form-control" name="desc" placeholder="Nhập mô tả của sản phẩm">
+                <input type="text" class="form-control" value="{{ $product->desc }}" name="desc" placeholder="Nhập mô tả của sản phẩm">
             </div>
             <div class="mb-3">
                 <label class="form-label">Price</label>
-                <input type="number" class="form-control" name="price" placeholder="Nhập giá của sản phẩm">
+                <input type="number" class="form-control" value="{{ $product->price }}" name="price" placeholder="Nhập giá của sản phẩm">
             </div>
             <div class="mb-3">
                 <label class="form-label">Size</label>
-                <input type="text" class="form-control" name="size" placeholder="Nhập giá của sản phẩm">
+                <input type="text" class="form-control" value="{{ $product->size }}" name="size" placeholder="Nhập giá của sản phẩm">
             </div>
             <div class="mb-3">
                 <label class="form-label">Color</label>
-                <input type="text" class="form-control" name="color" placeholder="Nhập màu sắc của sản phẩm">
+                <input type="text" class="form-control" value="{{ $product->color }}" name="color" placeholder="Nhập màu sắc của sản phẩm">
                 
             </div>
             <div class="mb-3">
                 <label for="date_add" class="form-label">Date_add</label>
-                <input type="date" name="date_add">
+                <input type="date" name="date_add" value="{{ $product->date_add }}">
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-sm-4 control-label">Ảnh CMND/CCCD</label>
                 <div class="col-md-9 col-sm-8">
                     <div class="row">
                         <div class="col-xs-6">
-                            <img id="mat_truoc_preview" src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" alt="your image"
+                            <img id="mat_truoc_preview" src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" value="{{ $product->image }}" alt="your image"
                                  style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-fluid"/>
-                            <input type="file" name="image" accept="image/*"
+                            <input type="file" value="{{ $product->image }}" name="image" accept="image/*"
                                    class="form-control-file @error('image') is-invalid @enderror" id="cmt_truoc">
                             <label for="cmt_truoc">Mặt trước</label><br/>
                         </div>

@@ -19,3 +19,8 @@ Route::get('/', function () {
 Route::get('/product',[App\Http\Controllers\ProductController::class, 'index']);
 Route::post('/product',[App\Http\Controllers\ProductController::class, 'index']);
 Route::match(['GET','POST'],'/product/add',[App\Http\Controllers\ProductController::class, 'addProduct'])->name('route_product_add');
+Route::match(['GET','POST'],'/product/edit/{id}',[App\Http\Controllers\ProductController::class, 'editProduct'])->name('route_product_edit');
+Route::get('/category',[App\Http\Controllers\CategoryController::class, 'index']);
+Route::post('/category',[App\Http\Controllers\CategoryController::class, 'index']);
+Route::match(['GET','POST'],'/category/add',[App\Http\Controllers\CategoryController::class, 'addCategory'])->name('route_category_add');
+Route::match(['GET','POST'],'/category/edit/{id}',[App\Http\Controllers\CategoryController::class, 'editCategory'])->name('route_category_edit');

@@ -21,7 +21,8 @@ return new class extends Migration
             $table->double('price');
             $table->string('size');
             $table->string('color');
-            $table->date('date_add');
+            $table->string('image')->nullable();
+            $table->date('date_add')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
