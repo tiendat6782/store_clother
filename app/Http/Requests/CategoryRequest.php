@@ -13,7 +13,7 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,18 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        $rule = [];
+        $currentAction = $this->route()->getActionMethod();
+        switch($this->method()):
+            case 'POST':
+                switch($currentAction):
+                    case 'addCategory':
+                        $rule = [
+                            "name"=>"required",
+                        ];
+                        break;
+                    endswitch;
+                endswitch;
+        return $rule;
     }
 }

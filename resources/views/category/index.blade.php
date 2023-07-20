@@ -28,6 +28,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Status</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +38,7 @@
                 <td>{{ $c->name }}</td>
                 
                 <td>{{ $c->status }}</td>
+                <td><a href="{{ route('route_category_delete',['id'=>$c->id]) }}">delete</a></td>
                 
             </tr>
             @endforeach

@@ -4,14 +4,14 @@
 
     
 
-        <form action="{{ route('route_category_add') }}"  method="POST">
+        <form action="{{ route('route_category_edit',['id'=>$category->id]) }}"  method="POST">
             @csrf
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Nhập category của sản phẩm">
+                <input type="text" class="form-control" name="name" value="{{ $category->name }}" placeholder="Nhập category của sản phẩm">
             </div>
 
-            <button type="submit" class="btn btn-primary">Add Category</button>
+            <button type="submit" class="btn btn-primary">Update Category</button>
         </form>
     
 

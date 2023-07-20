@@ -21,7 +21,14 @@
       </div>
     </div>
   </nav>
-
+  
+  <form action="{{ url('/product') }}" method="post">
+    @csrf
+    <label for="search">Name
+    <input type="text" name="search">
+</label>
+    <input type="submit" name="btnSearch" value="Tim kiem">
+</form>
 
 <table class="table table-danger table-inverse table-responsive" border="3">
     
@@ -37,7 +44,7 @@
             <th>Date_add</th>
             <th>Image</th>
             <th>Status</th>
-            <th></th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -51,8 +58,10 @@
                 <td>{{ $pr->size }}</td>
                 <td>{{ $pr->color }}</td>
                 <td>{{ $pr->date_add }}</td>
-                <td>{{ $pr->image }}</td>
+                <td><img src="{{ $pr->image?''.Storage::url($pr->image):''}}" style="width: 100px" /></td>
                 <td>{{ $pr->status }}</td>
+                <td><a href="{{ route('route_product_delete',['id'=>$pr->id]) }}">delete</a></td>
+                <td><a href="{{ route('route_product_edit',['id'=>$pr->id]) }}">edit</a></td>
                 
             </tr>
             @endforeach

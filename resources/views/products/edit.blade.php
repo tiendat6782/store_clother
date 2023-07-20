@@ -42,9 +42,9 @@
                 <div class="col-md-9 col-sm-8">
                     <div class="row">
                         <div class="col-xs-6">
-                            <img id="mat_truoc_preview" src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" value="{{ $product->image }}" alt="your image"
+                            <img id="mat_truoc_preview" src="{{ $product->image?''.Storage::url($product->image):''}}"  alt="your image"
                                  style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-fluid"/>
-                            <input type="file" value="{{ $product->image }}" name="image" accept="image/*"
+                            <input type="file" name="image" accept="image/*"
                                    class="form-control-file @error('image') is-invalid @enderror" id="cmt_truoc">
                             <label for="cmt_truoc">Mặt trước</label><br/>
                         </div>
@@ -52,7 +52,7 @@
                 </div>
     </div>
 
-            <button type="submit" class="btn btn-primary">Add Product</button>
+            <button type="submit" class="btn btn-primary">Update Product</button>
         </form>
     
 
