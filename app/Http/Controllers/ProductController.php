@@ -8,6 +8,7 @@ use  Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 
 class ProductController extends Controller
@@ -45,7 +46,7 @@ class ProductController extends Controller
 
 public function addProduct(ProductRequest $request)
     {
-        
+        $categories = Category::all();
         //nếu tồn tại request post , khi ng dùng click vào nút thì mới laf post
         if($request->isMethod('POST')) {
             $params = $request->except('_token');
@@ -60,7 +61,7 @@ public function addProduct(ProductRequest $request)
             }
             // dd(233);
         }
-        return view('products.add');
+        return view('products.add',compact('categories'));
     }
     public function editProduct(ProductRequest $request, $id){
         $product = Product::find($id);

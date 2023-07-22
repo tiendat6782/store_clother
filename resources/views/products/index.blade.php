@@ -43,7 +43,7 @@
             <th>Color</th>
             <th>Date_add</th>
             <th>Image</th>
-            <th>Status</th>
+            {{-- <th>Status</th> --}}
             <th>Action</th>
         </tr>
         </thead>
@@ -59,7 +59,7 @@
                 <td>{{ $pr->color }}</td>
                 <td>{{ $pr->date_add }}</td>
                 <td><img src="{{ $pr->image?''.Storage::url($pr->image):''}}" style="width: 100px" /></td>
-                <td>{{ $pr->status }}</td>
+                {{-- <td>{{ $pr->status }}</td> --}}
                 <td><a href="{{ route('route_product_delete',['id'=>$pr->id]) }}">delete</a></td>
                 <td><a href="{{ route('route_product_edit',['id'=>$pr->id]) }}">edit</a></td>
                 

@@ -12,8 +12,17 @@
             </div>
 
             <div class="mb-3">
+                {{-- <label class="form-label">Category_ID</label>
+                <input type="number" class="form-control" name="category_id"> --}}
                 <label class="form-label">Category_ID</label>
-                <input type="number" class="form-control" name="category_id">
+                <select class="form-select" name="category_id" id="category" aria-label="Default select example">
+                    {{-- <option selected>Open this select menu</option> --}}
+                    @foreach($categories as $ca)
+                    <option value="{{ $ca->id }}" name="category_id">{{ $ca->name }}</option>
+                    {{-- <option value="2">Two</option>
+                    <option value="3">Three</option> --}}
+                    @endforeach
+                  </select>
             </div>
 
             <div class="mb-3">
