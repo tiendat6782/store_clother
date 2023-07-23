@@ -25,6 +25,9 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        .nav-link:hover{
+          color: red;
+        }
     </style>
 </head>
 <body>
@@ -47,6 +50,9 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ url('/category') }}"><h2>Category</h2></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/customer') }}"><h2>Customer</h2></a>
                   </li>
                   
                 </ul>
