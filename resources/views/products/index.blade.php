@@ -30,7 +30,7 @@
     <input type="submit" name="btnSearch" value="Tim kiem">
 </form>
 
-<table class="table table-danger table-inverse table-responsive" border="3">
+<table class="table table-inverse table-responsive" border="3">
     
     <thead class="thead-inverse">
         <tr>
@@ -60,8 +60,11 @@
                 <td>{{ $pr->date_add }}</td>
                 <td><img src="{{ $pr->image?''.Storage::url($pr->image):''}}" style="width: 100px" /></td>
                 {{-- <td>{{ $pr->status }}</td> --}}
-                <td><a href="{{ route('route_product_delete',['id'=>$pr->id]) }}">delete</a></td>
-                <td><a href="{{ route('route_product_edit',['id'=>$pr->id]) }}">edit</a></td>
+                <td>
+                {{-- <a href="{{ route('route_product_delete',['id'=>$pr->id]) }}">delete</a> --}}
+                <button type="button" class="btn btn-danger"><a style="color: white;text-decoration: none" href="{{ route('route_product_delete',['id'=>$pr->id]) }}">delete</a></button>
+                <button type="button" class="btn btn-warning"><a style="color: black;text-decoration: none" href="{{ route('route_product_edit',['id'=>$pr->id]) }}">edit</a></button>
+                {{-- <a href="{{ route('route_product_edit',['id'=>$pr->id]) }}">edit</a></td> --}}
                 
             </tr>
             @endforeach

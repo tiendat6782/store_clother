@@ -27,6 +27,11 @@ class ProductController extends Controller
 
         return view('products.index', compact('products'));
     }
+    public function trangChu(){
+        $products = DB::table('product')->get();
+        $products =  Product::all();
+        return view('templates.index', compact('products'));
+    }
 //     public function addProduct(ProductRequest $request){
 //             if($request->isMethod('POST')) {
 //                 $params = $request->except('_token');

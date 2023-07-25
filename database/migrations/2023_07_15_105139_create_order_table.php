@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('total_amount'); //tong gia tri don hang
             $table->integer('status')->default(1); //trang thai don hang
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -54,6 +54,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ url('/customer') }}"><h2>Customer</h2></a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"><h4>Logout</h4></a>
+                  </li>
                   
                 </ul>
               </div>
