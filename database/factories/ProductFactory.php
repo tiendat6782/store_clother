@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             //
             "name"=>$this->faker->name(),
             'category_id' => Category::pluck('id')->random(),
-            "desc"=>$this->faker->text(),
+            "desc"=>$this->faker->name(),
             "price"=>$this->faker->randomFloat(0,100000,300000),
             "size"=>$this->faker->randomElement(['S','M','L','Xl','XXL']),
             "color"=>$this->faker->colorName(),

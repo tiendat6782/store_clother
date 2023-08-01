@@ -16,8 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 Route::match(['GET','POST'],'login',[App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::match(['GET','POST'],'logout',[App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/shop',[App\Http\Controllers\ProductController::class, 'trangchu'])->name('shop');
+
+Route::get('/shop/add-to-cart/{id}',[App\Http\Controllers\ProductController::class, 'addToCart'])->name('addToCart');
+Route::get('/shop/show-cart',[App\Http\Controllers\ProductController::class, 'showCart'])->name('showCart');
+Route::get('/shop/update-cart',[App\Http\Controllers\ProductController::class, 'updateCart'])->name('updateCart');
+Route::get('/shop/delete-cart',[App\Http\Controllers\ProductController::class, 'deleteCart'])->name('deleteCart');
 
 Route::middleware(['auth','check.role'])->group(function(){
 

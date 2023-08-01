@@ -15,6 +15,7 @@ class ProductController extends Controller
 {
     //
     public function index(Request $request){
+        
         $products = DB::table('product')->get();
         $products =  Product::all();
         if($request->isMethod('POST') && $request->name) {
@@ -30,8 +31,75 @@ class ProductController extends Controller
     public function trangChu(){
         $products = DB::table('product')->get();
         $products =  Product::all();
-        return view('templates.index', compact('products'));
+        return view('shopclother.product', compact('products'));
     }
+    public function addToCart($id){
+        // session()->flush('cart');
+        // print_r(session()->get('cart')); 
+        // dd('end');
+        
+    $products = Product::find($id);
+    $cart = session()->get('cart');
+    if(isset($cart[$id])){
+        $cart[$id]['quantity'] = $cart[$id]['quantity'] + 1;
+    }else{
+        $cart[$id] = [
+            'name' => $products->name,
+            'price' => $products->price,
+            'quantity' =>1,
+        ];
+    }
+    session()->put('cart',$cart);
+    // dd(session()->get('cart',$cart));   
+    // echo "<pre>";
+    // print_r(session()->get('cart'));  
+    return response()->json([
+        'status' => 200,
+        'message' => 'success'
+    ],200);
+    }
+    public function showCart(){
+        // echo "<pre>";
+    // print_r(session()->get('cart')); 
+    $carts = session()->get('cart');
+    return view('shopclother.cart', compact('carts'));
+    }
+    public function updateCart(Request $request){
+        // dd($request->all());
+        if($request->id && $request->quantity){
+            $carts = session()->get('cart');
+            $carts[$request->id]['quantity'] = $request->quantity;
+            session()->put('cart', $carts);
+            $carts = session()->get('cart');
+            
+            $cart_show = view('shopclother.compow.cart_show', compact('carts'))->render();
+           
+            return response()->json([
+                'status' => 200,
+                'cart_show' => $cart_show
+            ],200);
+        }
+    }
+    public function deleteCart(Request $request){
+        if($request->id){
+            $carts = session()->get('cart');
+            unset($carts[$request->id]);
+            session()->put('cart', $carts);
+            $carts = session()->get('cart');
+            
+            $cart_show = view('shopclother.compow.cart_show', compact('carts'))->render();
+           
+            return response()->json([
+                'status' => 200,
+                'cart_show' => $cart_show
+            ],200);
+        }
+    }
+    // public function giohang(){
+    //     $products = DB::table('product')->get();
+    //     $products =  Product::all();
+    //     return view('shopclother.giohang', compact('products'));
+    // }
 //     public function addProduct(ProductRequest $request){
 //             if($request->isMethod('POST')) {
 //                 $params = $request->except('_token');

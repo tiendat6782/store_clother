@@ -14,7 +14,13 @@ class CategoryController extends Controller
         $categories = DB::table('category')->get();
         $categories = Category::all();
         return view('category.index', compact('categories'));
-    } 
+    }
+    // public function indexCategory(Request $request){
+    //     $categories = DB::table('category')->get();
+    //     $categories = Category::all();
+    //     return view('shopclother.index', compact('categories'));
+    // }
+    
 
     public function addCategory(CategoryRequest $request){
         if($request->isMethod('POST')){
